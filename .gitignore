@@ -5,6 +5,4 @@ bin/
 !.gitignore
 *.log
 
-db.properties
-*.properties
-db.properties
+src/main/resources/db.properties
