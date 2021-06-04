@@ -37,3 +37,7 @@ Add below code  into the .gitignore file before push into the your GitHub repo t
 src/main/resources/db.properties
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> multiplefeatures
