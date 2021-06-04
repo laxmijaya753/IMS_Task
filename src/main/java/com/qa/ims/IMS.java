@@ -11,17 +11,39 @@ import com.qa.ims.persistence.domain.Domain;
 import com.qa.ims.utils.DBUtils;
 import com.qa.ims.utils.Utils;
 
+import com.qa.ims.controller.OrderController;
+import com.qa.ims.persistence.dao.OrderDAO;
+
+import com.qa.ims.controller.ItemController;
+import com.qa.ims.persistence.dao.ItemDAO;
+
 public class IMS {
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	private final CustomerController customers;
+	//Added code for Items
+		private final ItemController items;
+		//Added code for order
+		private final OrderController orders;
+	
 	private final Utils utils;
 
 	public IMS() {
 		this.utils = new Utils();
 		final CustomerDAO custDAO = new CustomerDAO();
 		this.customers = new CustomerController(custDAO, utils);
+		
+		
+		//Added code for Items
+				final ItemDAO itemDAO=new ItemDAO();
+				this.items = new ItemController(itemDAO, utils);
+				
+				//Added code for order
+				
+				
+				final OrderDAO orderDAO=new OrderDAO();
+				this.orders = new OrderController(orderDAO, utils);
 	}
 
 	public void imsSystem() {
@@ -50,8 +72,10 @@ public class IMS {
 				active = this.customers;
 				break;
 			case ITEM:
+				active = this.items;
 				break;
 			case ORDER:
+				active = this.orders;
 				break;
 			case STOP:
 				return;
